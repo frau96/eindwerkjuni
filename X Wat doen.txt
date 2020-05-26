@@ -1,0 +1,3 @@
+Telkens je nieuwe verandereingen hebt aangebracht: "stage all changes" (+)
+Als je klaar bent: commit all changes
+
