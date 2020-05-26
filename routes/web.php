@@ -13,6 +13,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/','PagesController@index');
+Route::get('/over','PagesController@over');
+Route::get('/psychologen','PagesController@psychologen');
+
+/*
 Route::get('/', function () {
     return view('welcome');
 });
+*/
+Route::get('/over', function () {
+    return view('pages.over');
+});
+
+/* PSYCHOLOGEN PAGINA
+Route::get('/psychologen/{id}', function ($id) {
+    return view('pages.psychologen');
+});
+*/
