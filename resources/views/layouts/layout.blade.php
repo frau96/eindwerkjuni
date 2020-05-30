@@ -18,8 +18,9 @@
     </head>
     <body>
 
-        @include('pages.navbar')
+        
         <div class="container">
+            @include('pages.navbar')
             @yield('content')
         </div>
 
