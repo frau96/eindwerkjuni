@@ -31,3 +31,5 @@ Route::get('/psychologen/{id}', function ($id) {
     return view('pages.psychologen');
 });
 */
+
+Route::resource('psycholoogs', 'PsycholoogsController');
