@@ -33,3 +33,8 @@ Route::get('/psychologen/{id}', function ($id) {
 */
 
 Route::resource('psycholoogs', 'PsycholoogsController');
+
+Route::resource('availabilities', 'AvailabilitiesController');
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index');
