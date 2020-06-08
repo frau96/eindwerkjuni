@@ -15,7 +15,11 @@ class PsycholoogsController extends Controller
     public function index()
     {
         $psycholoogs = Psycholoog::all();
+        //$psycholoogs = Psycholoog::with('availabilities');
+        //dd($psycholoogs);  
+
         return view('psycholoogs.index')->with('psycholoogs', $psycholoogs);
+
     }
 
     /**
@@ -25,7 +29,7 @@ class PsycholoogsController extends Controller
      */
     public function create()
     {
-        //
+        return view('psycholoogs.create');
     }
 
     /**
@@ -36,7 +40,8 @@ class PsycholoogsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //$user_id = auth()->user()->id;
+
     }
 
     /**
@@ -84,4 +89,6 @@ class PsycholoogsController extends Controller
     {
         //
     }
+
+
 }

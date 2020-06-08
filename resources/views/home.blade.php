@@ -1,4 +1,4 @@
-@extends('layouts.layout')
+@extends('layouts.app')
 
 @section('content')
 <div class="container">
@@ -14,19 +14,8 @@
                         </div>
                     @endif
 
-
                     You are logged in!
                 </div>
-                <div class="card-footer">
-                    @if($isPsycholoog == true)
-                        <a href="/availabilities" class="btn btn-primary">Bekijk je beschikbaarheden</a>
-                        
-                    @else
-                        <a href="/psycholoogs/create" class="btn btn-primary">Maak je profielgegevens aan</a>
-                    @endif
-                </div>
-
-                <!--@dump($isPsycholoog)-->
             </div>
         </div>
     </div>

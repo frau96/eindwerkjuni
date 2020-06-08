@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <h1>Psychologen</h1>
+    <h1>Een overzicht van de psychologen</h1>
 
     @if(count($psycholoogs) > 0)
         @foreach($psycholoogs as $psycholoog)

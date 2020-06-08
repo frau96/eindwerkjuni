@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddUserIdToAvailabilities extends Migration
+class AddUserIdToPsycholoogsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class AddUserIdToAvailabilities extends Migration
      */
     public function up()
     {
-        Schema::table('availabilities', function($table) {
+        Schema::table('psycholoogs', function ($table) {
             $table->integer('user_id');
         });
     }
@@ -25,7 +25,7 @@ class AddUserIdToAvailabilities extends Migration
      */
     public function down()
     {
-        Schema::table('availabilities', function($table) {
+        Schema::table('psycholoogs', function ($table) {
             $table->dropColumn('user_id');
         });
     }

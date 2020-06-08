@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Availability;
+use App\Psycholoog;
 
 class AvailabilitiesController extends Controller
 {
@@ -14,7 +15,15 @@ class AvailabilitiesController extends Controller
      */
     public function index()
     {
-        $availabilities = Availability::orderBy('date', 'asc')->get();
+        $psycholoog = Psycholoog::where('user_id', auth()->user()->id)->first();
+        $availabilities = '';
+        if(!empty($psycholoog)){
+            $availabilities = Availability::orderBy('date', 'asc')
+                ->where('psych_id', $psycholoog->id)
+                ->get(); 
+        }
+
+        //$availabilities = Availability::orderBy('date', 'asc')->get();
         return view('availabilities.index')->with('availabilities', $availabilities);
     }
 
@@ -42,12 +51,14 @@ class AvailabilitiesController extends Controller
             'time'=>'required',
         ]);
 
+        $psycholoog = Psycholoog::where('user_id', auth()->user()->id)->first();
+
         // Add new availability
         $availability = new Availability;
         $availability->subject = $request->input('subject');
         $availability->date = $request->input('date');
         $availability->time = $request->input('time');
-        $availability->user_id = auth()->user()->id;
+        $availability->psych_id = $psycholoog->id;
         $availability->save();
 
         return redirect('/availabilities')->with('success', 'Beschikbaarheid aangemaakt');
