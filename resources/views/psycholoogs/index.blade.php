@@ -16,7 +16,7 @@
                 <!--class="font-weight-bold"-->
 
 
-                <button type="button" class="btn btn-info">Maak een afspraak</button>
+                <a class="btn btn-primary" href="/psycholoogs/availability/{{$psycholoog->id}}">Bekijk de beschikbaarheden</a>
                 
             </div>
 

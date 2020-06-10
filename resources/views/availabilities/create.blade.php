@@ -25,7 +25,7 @@
 
 
         <button type="submit" class="btn btn-primary">Beschikbaarheid toevoegen</button>
-</form>
+    </form>
 
 
 

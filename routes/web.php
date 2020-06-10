@@ -37,4 +37,13 @@ Route::resource('psycholoogs', 'PsycholoogsController');
 Route::resource('availabilities', 'AvailabilitiesController');
 Auth::routes();
 
+Route::resource('appointments', 'AppointmentsController');
+
 Route::get('/dashboard', 'DashboardController@index');
+
+Route::get('/availabilities/new-appointment/{id}', 'AppointmentsController@createappointment');
+Route::get('/psycholoogs/availability/{id}', 'AvailabilitiesController@indexClient');
+
+Route::get('/appointment/thanks', function () {
+    return view('appointments.thanks');
+});

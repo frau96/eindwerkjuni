@@ -13,7 +13,7 @@
    
 
 
-    <form action="{{ route('availabilities.destroy',$availability->id) }}" method="POST">
+    <form action="{{ route('availabilities.destroy', $availability->id) }}" method="POST">
         @csrf
         @method('DELETE')
         <!-- edit button -->

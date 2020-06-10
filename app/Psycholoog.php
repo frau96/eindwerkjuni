@@ -9,4 +9,7 @@ class Psycholoog extends Model
     public function availabilities(){
         return $this->HasMany('App\Psycholoog');
     }
+    public function user(){
+        return $this->belongsTo('App\User');
+    }
 }

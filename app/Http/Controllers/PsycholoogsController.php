@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Psycholoog; // Verwezen naar het model Psycholoog.php
+use App\User;
 
 class PsycholoogsController extends Controller
 {
@@ -40,8 +41,37 @@ class PsycholoogsController extends Controller
      */
     public function store(Request $request)
     {
-        //$user_id = auth()->user()->id;
+        
+        $this->validate($request, [
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'email'=>'required',
+            'telephone'=>'required',
+            'address'=>'required',
+            'zipcode'=>'required',
+            'city'=>'required',
+            'specialisation'=>'required',
+            'description'=>'required',
+        ]);
 
+        $user_id = auth()->user()->id;   
+
+        // Adding new psych data
+        $psych = new Psycholoog;
+        $psych->firstname = $request->input('firstname');
+        $psych->lastname = $request->input('lastname');
+        $psych->email = $request->input('email');
+        $psych->telephone = $request->input('telephone');
+        $psych->address = $request->input('address');
+        $psych->zipcode = $request->input('zipcode');
+        $psych->city = $request->input('city');
+        $psych->specialisation = $request->input('specialisation');
+        $psych->description = $request->input('description');
+        
+        $psych->user_id = $user_id;
+        $psych->save();
+
+        return redirect('/psycholoogs/'. $psych->id)->with('success', 'Profielgegevens bijgewerkt');
     }
 
     /**

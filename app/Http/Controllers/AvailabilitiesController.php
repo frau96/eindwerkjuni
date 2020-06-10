@@ -20,12 +20,24 @@ class AvailabilitiesController extends Controller
         if(!empty($psycholoog)){
             $availabilities = Availability::orderBy('date', 'asc')
                 ->where('psych_id', $psycholoog->id)
+                ->where('is_taken', 0)
                 ->get(); 
         }
 
         //$availabilities = Availability::orderBy('date', 'asc')->get();
         return view('availabilities.index')->with('availabilities', $availabilities);
     }
+
+    public function indexClient($id)
+    { 
+        $availabilities = Availability::orderBy('date', 'asc')
+            ->where('psych_id', $id)
+            ->where('is_taken', 0)
+            ->get(); 
+
+        return view('availabilities.index')->with('availabilities', $availabilities);
+    }
+
 
     /**
      * Show the form for creating a new resource.

@@ -12,8 +12,18 @@
                 <p>{{$availability->date}}</p>
                 <p>{{$availability->time}}</p>
 
-                <button type="button" class="btn btn-info">Boek deze afspraak</button>
-                <button type="button" class="btn btn-info">Plaats jezelf op de wachtlijst???</button>
+                <form action="{{ route('availabilities.destroy', $availability->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <!-- edit button -->
+                    <button type="button" class="btn btn-success"><a href="/availabilities/{{$availability->id}}/edit">Bewerk beschikbaarheid</a></button>
+                    
+                    <!-- delete button -->
+                        <button type="button" class="btn btn-danger float-right">Delete</button>
+                </form>
+
+                <a href="/availabilities/new-appointment/{{$availability->id}}" class="btn btn-info">Maak deze afspraak</a>
+                <!--<button type="button" class="btn btn-info">Plaats jezelf op de wachtlijst???</button>-->
                               
             </div>
 

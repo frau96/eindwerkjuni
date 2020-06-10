@@ -2,6 +2,9 @@
 
 @section('content')
 
+    <button type="button" class="btn btn-info"><a href="/availabilities">< Terug naar beschikbaarheden</a></button>
+
+
     <h1>Beschikbaarheid bewerken</h1>
     <form method="post" action="{{ route('availabilities.update', $availability->id) }}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
@@ -28,18 +31,3 @@
 </form>
 
 @endsection
-
-<form method="post" action="{{ route('posts.update',$post->id) }}" method="POST">
-    <div class="form-group">
-    @method('PUT')
-    @csrf            
-    <label for="title">Title</label>
-    <input type="text" class="form-control" value="{{$post->title}}" name="title" placeholder="Title"/>
-    </div>
-    <div class="form-group">
-    <label for="body">Body</label>
-    <textarea class="form-control" name="body" cols="30" rows="10" placeholder="Body Text">{{$post->body}}</textarea>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Post</button>
-</form>
