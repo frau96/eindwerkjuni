@@ -71,6 +71,7 @@ class AvailabilitiesController extends Controller
         $availability->date = $request->input('date');
         $availability->time = $request->input('time');
         $availability->psych_id = $psycholoog->id;
+        $availability->is_taken = 0;
         $availability->save();
 
         return redirect('/availabilities')->with('success', 'Beschikbaarheid aangemaakt');

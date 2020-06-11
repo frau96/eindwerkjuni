@@ -15,7 +15,7 @@
                     @endif
 
 
-                    You are logged in!
+                    Je bent nu ingelogd
                 </div>
                 <div class="card-footer">
                     @if($isPsycholoog == true)
