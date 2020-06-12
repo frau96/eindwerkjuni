@@ -1,4 +1,3 @@
-
 <!--
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
@@ -54,6 +53,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="/psycholoogs">Psychologen</a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/availabilities">Mijn beschikbaarheden</a>
+              </li>
+
             </ul>
       
       
@@ -78,6 +81,7 @@
                     @endif
                 @else
                     <li class="nav-item dropdown">
+                      
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                             {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
@@ -104,6 +108,8 @@
                                  {{ __('Logout') }}
                              
                               </a>
+
+                              
                              
                              </li>
 

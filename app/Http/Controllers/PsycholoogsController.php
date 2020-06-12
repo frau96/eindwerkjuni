@@ -52,7 +52,28 @@ class PsycholoogsController extends Controller
             'city'=>'required',
             'specialisation'=>'required',
             'description'=>'required',
+
+            'photo'=>'max:2048|mimes:jpeg,png',
         ]);
+
+        //dd($validation);
+
+        if($request->hasFile('photo')){
+            // Originele benaming van image + bv png
+            $fileNameWithExt = $request->file('photo')->getClientOriginalName();
+            // Originele benaming van image
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
+            // Enkel extension
+            $extension = $request->file('photo')->getClientOriginalExtension();
+            // Volledige filename storen (unieke name door timestamp)
+            $fileNameToStore = $filename.'_'.time().'.' .$extension;
+            // Upload image naar upload folder
+            $path = $request->file('photo')->storeAs('public/uploads', $fileNameToStore);
+        } else{
+            $fileNameToStore = 'noimage.jpg';
+        }
+        $request->file('photo')->move(public_path('uploads'),$fileNameToStore);
+
 
         $user_id = auth()->user()->id;   
 
@@ -67,6 +88,8 @@ class PsycholoogsController extends Controller
         $psych->city = $request->input('city');
         $psych->specialisation = $request->input('specialisation');
         $psych->description = $request->input('description');
+
+        $psych->photo = $fileNameToStore;
         
         $psych->user_id = $user_id;
         $psych->save();
@@ -94,7 +117,12 @@ class PsycholoogsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $psycholoog = Psycholoog::find($id);
+        // return view('psycholoogs.edit')->with('psycholoog', $psycholoog);
+
+
+        return view('psycholoogs.edit')->with('psycholoog',$psycholoog);
+
     }
 
     /**

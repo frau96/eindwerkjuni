@@ -59,6 +59,10 @@
             <textarea class="form-control" name="description" cols="30" rows="5" placeholder="Beschrijving"></textarea>
         </div>
 
+        <div class="form-group">       
+            <label for="description">Upload eigen profielfoto</label>
+            <input type="file" class="form-control" name="photo">
+        </div>
 
         <button type="submit" class="btn btn-primary">Voeg profielgegevens toe</button>
     </form>
