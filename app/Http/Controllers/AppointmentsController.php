@@ -52,11 +52,15 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
+        $validate = (
+
         $this->validate($request, [
             'client_firstname'=>'required',
             'client_lastname'=>'required',
             'client_email'=>'required',
-        ]);
+        ])
+
+        );
 
         //dd($request);
         $availability_id = $request->input('availability_id');
@@ -75,7 +79,13 @@ class AppointmentsController extends Controller
         $availability->is_taken = 1;                            // De availability is_taken is true
         $availability->save();
 
-        //return redirect('/availabilities')->with('success', 'Beschikbaarheid aangemaakt');
+        
+            Mail::send('mail.contact', $validate ,function($message){
+                $message->to(request('client_email'))
+                ->subject('Bevestiging van uw afspraak');
+            });
+
+
         return view('appointments.thanks');
 
       /* 
