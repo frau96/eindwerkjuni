@@ -1,13 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html >
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <!-- CSRF Token -->
+  <meta name="csrf-token" content="{{ csrf_token() }}">
+    
+  <title>{{ config('app.name', 'Laravel') }}</title>
 
-  <title>Easier</title>
-  <meta content="" name="descriptison">
-  <meta content="" name="keywords">
+  <!-- Scripts -->
+  <script src="{{ asset('js/app.js') }}" defer></script>
+ 
 
   <!-- Favicons -->
   <link href="assets/img/favicon.png" rel="icon">
@@ -15,6 +19,12 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link rel="dns-prefetch" href="//fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+  <link href = {{ asset("bootstrap/css/bootstrap.css") }} rel="stylesheet"/>
 
   <!-- Vendor CSS Files -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,6 +36,9 @@
 
   <!-- Template Main CSS File -->
   <link href="assets/css/style.css" rel="stylesheet">
+  <!-- Styles -->
+  <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head>
 
   <!-- =======================================================
   * Template Name: Appland - v2.0.0
@@ -36,36 +49,17 @@
 </head>
 
 <body>
+    @include('pages.navbar')
+       
 
-  <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
-    <div class="container d-flex">
-
-      <div class="logo mr-auto">
-        <h1 class="text-light"><a href="index.html">Easier</a></h1>
-        <!-- Uncomment below if you prefer to use an image logo -->
-        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-      </div>
-
-      <nav class="nav-menu d-none d-lg-block">
-        <ul>
-          <li class="active"><a href="#header">Home</a></li>
-          <li><a href="#features">App Features</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#faq">F.A.Q</a></li>
-          <li><a href="#contact">Contact Us</a></li>
-
-          <li class="get-started"><a href="#features">Get Started</a></li>
-        </ul>
-      </nav><!-- .nav-menu -->
-
-    </div>
-  </header><!-- End Header -->
-
+  
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
+    <div class="container">
 
+        @include('messages.messages')
+        @yield('content')
+    </div>
     <div class="container">
       <div class="row">
         <div class="col-lg-6 d-lg-flex flex-lg-column justify-content-center align-items-stretch pt-5 pt-lg-0 order-2 order-lg-1" data-aos="fade-up">
@@ -631,3 +625,55 @@
 </body>
 
 </html>
+
+
+
+
+{{-- <!doctype html>
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSRF Token -->
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <title>{{ config('app.name', 'Laravel') }}</title>
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}" defer></script>
+
+    <!-- Fonts -->
+    <link rel="dns-prefetch" href="//fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+
+    <link href = {{ asset("bootstrap/css/bootstrap.css") }} rel="stylesheet"/>
+
+
+    <!-- Styles -->
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+</head> --}}
+<body>
+    <div id="app">
+        @include('pages.navbar')
+        <div class="container">
+
+            @include('messages.messages')
+            @yield('content')
+        </div>
+       
+
+        <main class="py-4">
+         
+        </main>
+    </div>
+</body>
+
+    <script src="./resources/app.js"></script>
+
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+</html>
+
