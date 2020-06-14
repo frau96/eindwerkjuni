@@ -25,8 +25,8 @@
                 <p>Telefoonnummer: {{$psycholoog->telephone}} </p>
                 <p>Adres: {{$psycholoog->address}}, {{$psycholoog->zipcode}} {{$psycholoog->city}} </p> --}}
                 
-                <a class="btn btn-primary " href="/psycholoogs/availability/{{$psycholoog->id}}">Bekijk de beschikbaarheden</a>
-                
+                <a class="get-started" href="/psycholoogs/availability/{{$psycholoog->id}}">Bekijk de beschikbaarheden</a>
+            
             </div>
         
         

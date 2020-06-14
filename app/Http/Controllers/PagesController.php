@@ -17,5 +17,13 @@ class PagesController extends Controller
     public function psychologen(){
         return view('pages.psychologen');
     }
+
+    public function faq(){
+        return view('pages.faq');
+    }
+    public function contact(){
+        return view('pages.contact');
+    }
+
 }
 

@@ -3,7 +3,6 @@
     <div class="footer-top">
       <div class="container">
         <div class="row justify-content-center">
-
           <div class="col-lg-3 col-md-6 footer-contact" data-aos="fade-up">
             <h3>Easier</h3>
             <p>
@@ -21,8 +20,8 @@
               <li><i class="bx bx-chevron-right"></i> <a href="/">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/over">Hoe werkt het</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="/psycholoogs">Psychologen</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">FAQ</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Contact</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/faq">FAQ</a></li>
+              <li><i class="bx bx-chevron-right"></i> <a href="/contact">Contact</a></li>
             </ul>
           </div>
 

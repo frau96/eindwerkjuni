@@ -5,15 +5,15 @@
     <div class="logo mr-auto">
       <h1 class="text-light"><a href="{{ url('/') }}">{{config('app.name', 'Laravel') }}</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      {{-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> --}}
     </div>
-
+    
     <nav class="nav-menu d-none d-lg-block">
       <ul>
         <li><a href="/over">Hoe werkt het</a></li>
         <li><a href="/psycholoogs">Psychologen</a></li>
-        <li><a href="#faq">F.A.Q</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="/faq">F.A.Q</a></li>
+        <li><a href="/contact">Contact</a></li>
         <!-- Authentication Links -->
         @guest
             <li class="get-started">

@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('contact')
+@section('content')
 <section id="contact" class="contact">
     <div class="container">
 
