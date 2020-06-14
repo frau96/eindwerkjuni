@@ -10,7 +10,7 @@
 
     <nav class="nav-menu d-none d-lg-block">
       <ul>
-        <li><a href="#features">Hoe werkt het</a></li>
+        <li><a href="/over">Hoe werkt het</a></li>
         <li><a href="/psycholoogs">Psychologen</a></li>
         <li><a href="#faq">F.A.Q</a></li>
         <li><a href="#contact">Contact</a></li>
