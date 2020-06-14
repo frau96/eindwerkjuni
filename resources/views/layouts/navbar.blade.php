@@ -14,7 +14,6 @@
         <li><a href="/psycholoogs">Psychologen</a></li>
         <li><a href="#faq">F.A.Q</a></li>
         <li><a href="#contact">Contact</a></li>
-        <li><a href="/availabilities/create">Nieuwe beschikbaarheid aanmaken</a></li>
         <!-- Authentication Links -->
         @guest
             <li class="get-started">
@@ -26,6 +25,7 @@
                 </li>
             @endif
         @else
+        <li><a href="/availabilities/create">Nieuwe beschikbaarheid aanmaken</a></li>
             <li class="nav-item dropdown">
                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                     {{ Auth::user()->name }} <span class="caret"></span>
@@ -46,7 +46,7 @@
                      
                      <li class="get-started">
                      
-                      <a class="nav-link" href="{{ route('logout') }}"
+                      <a class="get-started" href="{{ route('logout') }}"
                       onclick="event.preventDefault();
                       document.getElementById('logout-form').submit();">
                      

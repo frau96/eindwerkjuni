@@ -2,7 +2,7 @@
 <footer id="footer">
     <div class="footer-top">
       <div class="container">
-        <div class="row">
+        <div class="row justify-content-center">
 
           <div class="col-lg-3 col-md-6 footer-contact" data-aos="fade-up">
             <h3>Easier</h3>
