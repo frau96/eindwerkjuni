@@ -4,7 +4,9 @@
 
     <h1>Beschikbaarheden</h1>
 
-
+    @guest
+        
+   
     @if(count($availabilities) > 0)
         @foreach($availabilities as $availability)
             <div class="card card-body bg-light psych">
@@ -12,9 +14,13 @@
                 <p>{{$availability->date}}</p>
                 <p>{{$availability->time}}</p>
 
+                <a href="/availabilities/new-appointment/{{$availability->id}}" class="btn btn-info">Maak deze afspraak</a>
+                <!--<button type="button" class="btn btn-info">Plaats jezelf op de wachtlijst???</button>-->
+
                 <form action="{{ route('availabilities.destroy', $availability->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
+    
                     <!-- edit button -->
                     <button type="button" class="btn btn-success"><a href="/availabilities/{{$availability->id}}/edit">Bewerk beschikbaarheid</a></button>
                     
@@ -22,8 +28,7 @@
                         <button type="button" class="btn btn-danger float-right">Delete</button>
                 </form>
 
-                <a href="/availabilities/new-appointment/{{$availability->id}}" class="btn btn-info">Maak deze afspraak</a>
-                <!--<button type="button" class="btn btn-info">Plaats jezelf op de wachtlijst???</button>-->
+                
                               
             </div>
 
@@ -36,5 +41,6 @@
         <a href="/availabilities/create" class="btn btn-primary">Maak je eerste beschikbaarheid aan</a>
 
     @endif
+    @endguest
 
 @endsection
