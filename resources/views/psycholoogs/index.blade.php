@@ -19,11 +19,16 @@
            
                 <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
             <h3><a href="/psycholoogs/{{$psycholoog->id}}">{{$psycholoog->firstname}} {{$psycholoog->lastname}}</a></h3>
-            <h4>{{$psycholoog->specialisation}}</h4>
-                <p>{{$psycholoog->description}}</p>
-                {{-- <p>E-mail: {{$psycholoog->email}} </p>
-                <p>Telefoonnummer: {{$psycholoog->telephone}} </p>
-                <p>Adres: {{$psycholoog->address}}, {{$psycholoog->zipcode}} {{$psycholoog->city}} </p> --}}
+                <p><br>{{$psycholoog->description}}</p>
+                <p>E-mail:<br>{{$psycholoog->email}} </p>
+                <p>Telefoonnummer:<br> {{$psycholoog->telephone}} </p>
+                <p>Adres:<br> {{$psycholoog->address}} {{$psycholoog->zipcode}} {{$psycholoog->city}} </p>
+                <p>Specialisatie<br>{{$psycholoog->specialisation}}</p>
+                <!--class="font-weight-bold"-->
+                <img style="width:100%" src="/uploads/{{$psycholoog->photo}}">
+
+
+                <a class="btn btn-primary" href="/psycholoogs/availability/{{$psycholoog->id}}">Bekijk de beschikbaarheden</a>
                 
                 <a class="get-started" href="/psycholoogs/availability/{{$psycholoog->id}}">Bekijk de beschikbaarheden</a>
             

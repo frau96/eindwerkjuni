@@ -61,6 +61,10 @@
         </div>
         <div class="text-center"><button type="submit">Voeg profielgegevens toe</button></div>
 
+        <div class="form-group">       
+            <label for="description">Upload eigen profielfoto</label>
+            <input type="file" class="form-control" name="photo">
+        </div>
 
        
     </form>

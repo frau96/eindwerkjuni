@@ -30,9 +30,9 @@ class AvailabilitiesController extends Controller
 
     public function indexClient($id)
     { 
-        $availabilities = Availability::orderBy('date', 'asc')
-            ->where('psych_id', $id)
-            ->where('is_taken', 0)
+        $availabilities = Availability::orderBy('date', 'asc')                          // Zelfde functie als index, maar dan enkel wat cliënt ziet
+            ->where('psych_id', $id)                                                   // Haal alle availabilities op, van deze psycholoog
+            ->where('is_taken', 0)                                                    // Enkel diegene die nog niet zijn ingenomen
             ->get(); 
 
         return view('availabilities.index')->with('availabilities', $availabilities);
@@ -63,15 +63,16 @@ class AvailabilitiesController extends Controller
             'time'=>'required',
         ]);
 
-        $psycholoog = Psycholoog::where('user_id', auth()->user()->id)->first();
+        $psycholoog = Psycholoog::where('user_id', auth()->user()->id)->first();    // zoek de psycholoog op, waar de user_id is geverifiëerd met de authenticatie
+                                                                                    // Zo worden enkel de availabilities van die psycholoog opgehaald
 
         // Add new availability
         $availability = new Availability;
         $availability->subject = $request->input('subject');
         $availability->date = $request->input('date');
         $availability->time = $request->input('time');
-        $availability->psych_id = $psycholoog->id;
-        $availability->is_taken = 0;
+        $availability->psych_id = $psycholoog->id;              // de id van de psycholoog
+        $availability->is_taken = 0;                            // is_taken 0, is nog niet ingenomen, dus nog altijd beschikbaar
         $availability->save();
 
         return redirect('/availabilities')->with('success', 'Beschikbaarheid aangemaakt');
@@ -137,18 +138,6 @@ class AvailabilitiesController extends Controller
     {
         $availability = Availability::find($id);
         $availability->delete();
-        return redirect('/availabilities')->with('success', 'Post successfully removed');
-
-    /*
-        //Check for correct user
-        if(auth()->user()->id !==$availability->user_id){
-            return redirect('/availabilities')->with('error', 'Unauthorised page');
-        }
-
-        $availability->delete();
-
-        return redirect('/availabilities')->with('success', 'Post successfully removed');
-    */
-
+        return redirect('/availabilities')->with('success', 'Beschikbaarheid verwijderd');
     }
 }
