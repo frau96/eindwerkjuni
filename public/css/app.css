@@ -6,6 +6,9 @@
  * Copyright 2011-2020 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
+ h1, h2, h3, p {
+  color: black;
+}
 
 :root {
   --blue: #3490dc;
