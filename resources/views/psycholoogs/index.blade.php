@@ -14,6 +14,7 @@
                 <p>Adres:<br> {{$psycholoog->address}} {{$psycholoog->zipcode}} {{$psycholoog->city}} </p>
                 <p>Specialisatie<br>{{$psycholoog->specialisation}}</p>
                 <!--class="font-weight-bold"-->
+                <img style="width:100%" src="/uploads/{{$psycholoog->photo}}">
 
 
                 <a class="btn btn-primary" href="/psycholoogs/availability/{{$psycholoog->id}}">Bekijk de beschikbaarheden</a>

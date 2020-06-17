@@ -6,6 +6,7 @@
 
 
     <h1>Beschikbaarheid bewerken</h1>
+    
     <form method="post" action="{{ route('availabilities.update', $availability->id) }}" method="POST" enctype="multipart/form-data">
         <div class="form-group">
         @method('PUT')

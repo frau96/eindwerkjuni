@@ -13,6 +13,7 @@
                 <p>Adres:<br> {{$psycholoog->address}} {{$psycholoog->zipcode}} {{$psycholoog->city}} </p>
                 <p>Specialisatie<br>{{$psycholoog->specialisation}}</p>
                 <!--class="font-weight-bold"-->
+                <img src="/uploads/{{$psycholoog->photo}}">
 
 
                 <button type="button" class="btn btn-info">Maak een afspraak</button>

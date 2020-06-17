@@ -27,13 +27,11 @@
                               
             </div>
 
-            
-
         @endforeach()
 
     @else
         <p>Er zijn geen beschikbaarheden voor deze psycholoog</p>
-        <a href="/availabilities/create" class="btn btn-primary">Maak je eerste beschikbaarheid aan</a>
+        <a href="/availabilities/create" class="btn btn-primary">Maak jouw beschikbaarheden aan</a>
 
     @endif
 

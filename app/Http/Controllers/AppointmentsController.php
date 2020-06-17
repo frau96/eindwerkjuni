@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use App\Appointment;
 use App\Availability;
+use App\Psycholoog;
+use Carbon\Carbon;
 
 class AppointmentsController extends Controller
 {
@@ -16,7 +18,17 @@ class AppointmentsController extends Controller
      */
     public function index()
     {
-        return view('appointments.index');
+        $psycholoog = Psycholoog::where('user_id', auth()->user()->id)->first();
+        $appointments = '';
+        if(!empty($psycholoog)){
+            $var = Carbon::now();
+            $appointments = Appointment::leftJoin('availabilities', 'appointments.availability_id', '=' , 'availabilities.id')
+                ->select('appointments.id','appointments.client_firstname', 'appointments.client_lastname', 'appointments.client_email',  'availabilities.subject', 'availabilities.time', 'availabilities.date')
+                ->where('appointments.psych_id', $psycholoog->id)
+                ->where('availabilities.date', '>=' , $var )
+                ->get();
+        }
+        return view('appointments.index')->with('appointments', $appointments);
     }
 
     /**
@@ -29,15 +41,19 @@ class AppointmentsController extends Controller
         
     }
 
+// Aparte functie createAppointment maken: 
+
     public function createAppointment($id) 
     {
         //dump($id);
         //dd('test');
         //dd($availability);
 
+        // Join doen van psycholoogs
+
         $availability = Availability::leftJoin('psycholoogs', 'availabilities.psych_id', '=' , 'psycholoogs.id')
         ->select('availabilities.id', 'availabilities.time', 'availabilities.date', 'availabilities.psych_id', 'psycholoogs.firstname', 'psycholoogs.lastname')
-        ->where('availabilities.id', $id)->firstOrFail(); // Gaat de availability zoeken
+        ->where('availabilities.id', $id)->firstOrFail(); // Gaat de availability zoeken, er is er maar één. Fail als er geen is
         
         return view('appointments.create')->with('availability', $availability);
 
@@ -52,11 +68,12 @@ class AppointmentsController extends Controller
      */
     public function store(Request $request)
     {
+
         $this->validate($request, [
             'client_firstname'=>'required',
             'client_lastname'=>'required',
             'client_email'=>'required',
-        ]);
+        ]); 
 
         //dd($request);
         $availability_id = $request->input('availability_id');
@@ -71,27 +88,28 @@ class AppointmentsController extends Controller
 
         $appointment->save();
 
-        $availability = Availability::find($availability_id);   // Nu wordt de availability gezocht
-        $availability->is_taken = 1;                            // De availability is_taken is true
+        $availability = Availability::find($availability_id);               // Nu wordt de availability gezocht
+        $availability->is_taken = 1;                                        // De availability is_taken is true: is niet meer beschikbaar als availability
         $availability->save();
 
-        //return redirect('/availabilities')->with('success', 'Beschikbaarheid aangemaakt');
-        return view('appointments.thanks');
+        
+        $a = Availability::leftJoin('psycholoogs', 'availabilities.psych_id', '=' , 'psycholoogs.id')
+        ->select('availabilities.id', 'availabilities.date', 'availabilities.time', 'psycholoogs.firstname', 'psycholoogs.lastname')
+        ->where('availabilities.id' , '=' , $availability_id)->first();
 
-      /* 
-        $validate = request()->validate([
-            
-        ]);
+        $data = array(
+            'date' => $a->date,
+            'time' => $a->time,
+            'psycholoog' => $a->firstname . ' ' . $a->lastname,
+        );
 
-        Mail::send('mails.contact', $validate, function ($message) {
-            $message->to(request('email'), request('firstname'));
-            $message->subject('Vraag van: '. request('name'));
-        });
+            Mail::send('mail.contact', $data ,function($message){       // bij afspraak maken, wordt bevestiging gestuurd (contact.blade.php)
+                $message->to(request('client_email'))                       // wordt verstuurd naar ingevoerde email van klant
+                ->subject('Bevestiging van uw afspraak');                   // subject van de email
+            });
 
 
-        return view('appointments.thanks'); // Nadat een afspraak wordt bevestigd
-
-        */
+        return view('appointments.thanks');                                 
     }
 
     /**
@@ -136,6 +154,22 @@ class AppointmentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        /*
+        $appointment = Appointment::find($id);
+        dd($appointment);
+        //$appointment->delete();
+
+        $this->validate($request, [
+            'client_firstname'=>'required',
+            'client_lastname'=>'required',
+            'client_email'=>'required',
+        ]);
+
+        $availability_id = $request->input('availability_id');
+        $availability = Availability::find($availability_id);               // Nu wordt de availability gezocht
+        $availability->is_taken = 0;                                        // De availability is_taken is true: is niet meer beschikbaar als availability
+        $availability->save();
+*/
+        return redirect('/appointments')->with('success', 'Afspraak verwijderd');
     }
 }
