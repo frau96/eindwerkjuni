@@ -16,6 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','PagesController@index');
 Route::get('/over','PagesController@over');
 Route::get('/psychologen','PagesController@psychologen');
+Route::get('/faq','PagesController@faq');
+Route::get('/contact','PagesController@contact');
+
 
 /*
 Route::get('/', function () {

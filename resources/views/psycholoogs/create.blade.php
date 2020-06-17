@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
+<div class="container">
 
     <h1>Vul je profielgegevens aan</h1>
 
@@ -58,14 +59,16 @@
             <label for="description">Beschrijving van jezelf</label>
             <textarea class="form-control" name="description" cols="30" rows="5" placeholder="Beschrijving"></textarea>
         </div>
+        <div class="text-center"><button type="submit">Voeg profielgegevens toe</button></div>
 
         <div class="form-group">       
             <label for="description">Upload eigen profielfoto</label>
             <input type="file" class="form-control" name="photo">
         </div>
 
-        <button type="submit" class="btn btn-primary">Voeg profielgegevens toe</button>
+       
     </form>
+</div>
 
 
 

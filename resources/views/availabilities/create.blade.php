@@ -1,10 +1,13 @@
 @extends('layouts.layout')
 
 @section('content')
+<div class="container"> 
+    <div class="section-title">
+        <h1>Nieuwe beschikbaarheid aanmaken</h1>
+    </div>
+    
 
-    <h1>Nieuwe beschikbaarheid aanmaken</h1>
-
-    <form method="post" action="{{ route('availabilities.store') }}"  enctype="multipart/form-data">
+    <form method="post" action="{{ route('availabilities.store') }}"  enctype="multipart/form-data" class="php-email-form" data-aos="fade-up"> 
         <div class="form-group">
         @csrf            
         <label for="beschikbaarheid">Naam beschikbaarheid</label>
@@ -22,11 +25,10 @@
             <label for="time">Tijdstip</label>
             <input type="time" class="form-control" name="time" placeholder="Tijdstip"/>
         </div>
+        <div class="text-center"><button type="submit">Beschikbaarheid toevoegen</button></div>
 
-
-        <button type="submit" class="btn btn-primary">Beschikbaarheid toevoegen</button>
     </form>
 
-
+</div>
 
 @endsection
