@@ -41,7 +41,10 @@ Route::resource('appointments', 'AppointmentsController');
 
 Route::get('/dashboard', 'DashboardController@index');
 
+// Aparte route voor de createAppointment function
 Route::get('/availabilities/new-appointment/{id}', 'AppointmentsController@createAppointment');
+
+//Aparte route voor de indexClient function
 Route::get('/psycholoogs/availability/{id}', 'AvailabilitiesController@indexClient');
 
 Route::get('/appointment/thanks', function () {

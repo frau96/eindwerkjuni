@@ -18,11 +18,13 @@
                     Je bent nu ingelogd
                 </div>
                 <div class="card-footer">
+                    
                     @if($isPsycholoog == true)
                         <a href="/availabilities" class="btn btn-primary">Bekijk je beschikbaarheden</a>
-                        <!--<a href="/psycholoogs//edit" class="btn btn-primary">Pas je profielgegevens aan</a>-->
 
+                        <a href="/psycholoogs/{{$psycholoog->id}}/edit" class="btn btn-primary">Pas je profielgegevens aan</a>
 
+                        <a href="/appointments" class="btn btn-primary">Bekijk mijn afspraken</a>
 
                         
                     @else

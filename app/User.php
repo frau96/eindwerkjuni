@@ -38,6 +38,6 @@ class User extends Authenticatable
     ];
 
     public function post(){
-        return $this->hasMany('App\Availability');
+        return $this->hasMany('App\Availability');          // een user heeft meerdere availabilities
     }
 }

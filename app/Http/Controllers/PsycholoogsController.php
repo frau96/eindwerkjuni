@@ -41,7 +41,6 @@ class PsycholoogsController extends Controller
      */
     public function store(Request $request)
     {
-        
         $this->validate($request, [
             'firstname'=>'required',
             'lastname'=>'required',
@@ -56,23 +55,17 @@ class PsycholoogsController extends Controller
             'photo'=>'max:2048|mimes:jpeg,png',
         ]);
 
-        //dd($validation);
-
+        //Upload photo
         if($request->hasFile('photo')){
-            // Originele benaming van image + bv png
-            $fileNameWithExt = $request->file('photo')->getClientOriginalName();
-            // Originele benaming van image
-            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);
-            // Enkel extension
-            $extension = $request->file('photo')->getClientOriginalExtension();
-            // Volledige filename storen (unieke name door timestamp)
-            $fileNameToStore = $filename.'_'.time().'.' .$extension;
-            // Upload image naar upload folder
-            $path = $request->file('photo')->storeAs('public/uploads', $fileNameToStore);
+            $fileNameWithExt = $request->file('photo')->getClientOriginalName();            // Originele benaming van image + bv png
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);                      // Originele benaming van image
+            $extension = $request->file('photo')->getClientOriginalExtension();             // Enkel extension
+            $fileNameToStore = $filename.'_'.time().'.' .$extension;                        // Volledige filename storen (unieke name door timestamp)
+            $path = $request->file('photo')->storeAs('public/uploads', $fileNameToStore);   // Upload image met filename naar upload folder
         } else{
             $fileNameToStore = 'noimage.jpg';
         }
-        $request->file('photo')->move(public_path('uploads'),$fileNameToStore);
+        $request->file('photo')->move(public_path('uploads'),$fileNameToStore);             // verplaats nu de photo naar de public uploads folder
 
 
         $user_id = auth()->user()->id;   
@@ -91,7 +84,7 @@ class PsycholoogsController extends Controller
 
         $psych->photo = $fileNameToStore;
         
-        $psych->user_id = $user_id;
+        $psych->user_id = $user_id;                                                          // de user id wordt meegegeven
         $psych->save();
 
         return redirect('/psycholoogs/'. $psych->id)->with('success', 'Profielgegevens bijgewerkt');
@@ -118,11 +111,7 @@ class PsycholoogsController extends Controller
     public function edit($id)
     {
         $psycholoog = Psycholoog::find($id);
-        // return view('psycholoogs.edit')->with('psycholoog', $psycholoog);
-
-
         return view('psycholoogs.edit')->with('psycholoog',$psycholoog);
-
     }
 
     /**
@@ -134,7 +123,55 @@ class PsycholoogsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'firstname'=>'required',
+            'lastname'=>'required',
+            'email'=>'required',
+            'telephone'=>'required',
+            'address'=>'required',
+            'zipcode'=>'required',
+            'city'=>'required',
+            'specialisation'=>'required',
+            'description'=>'required',
+
+            'photo'=>'max:2048|mimes:jpeg,png',
+        ]);
+
+    
+        if($request->hasFile('photo')){
+            $fileNameWithExt = $request->file('photo')->getClientOriginalName();            // Originele benaming van image + bv png
+            $filename = pathinfo($fileNameWithExt, PATHINFO_FILENAME);                      // Originele benaming van image
+            $extension = $request->file('photo')->getClientOriginalExtension();             // Enkel extension
+            $fileNameToStore = $filename.'_'.time().'.' .$extension;                        // Volledige filename storen (unieke name door timestamp)
+            $path = $request->file('photo')->storeAs('public/uploads', $fileNameToStore);   // Upload image met filename naar upload folder
+        }
+        $request->file('photo')->move(public_path('uploads'),$fileNameToStore);             // verplaats nu de photo naar de public uploads folder
+
+        $user_id = auth()->user()->id;   
+
+        // Updating new psych data
+        $psych = Psycholoog::find($id);
+        $psych->firstname = $request->input('firstname');
+        $psych->lastname = $request->input('lastname');
+        $psych->email = $request->input('email');
+        $psych->telephone = $request->input('telephone');
+        $psych->address = $request->input('address');
+        $psych->zipcode = $request->input('zipcode');
+        $psych->city = $request->input('city');
+        $psych->specialisation = $request->input('specialisation');
+        $psych->description = $request->input('description');
+
+        //$psych->photo = $fileNameToStore;
+        
+        $psych->user_id = $user_id;                                                          // de user id wordt meegegeven
+        
+        if($request->hasFile('photo')){
+            $psych->photo = $fileNameToStore;
+        }
+        
+        $psych->save();
+
+        return redirect('/psycholoogs/'. $psych->id)->with('success', 'Profielgegevens bijgewerkt');
     }
 
     /**
