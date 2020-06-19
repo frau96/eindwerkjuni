@@ -53,3 +53,6 @@ Route::get('/psycholoogs/availability/{id}', 'AvailabilitiesController@indexClie
 Route::get('/appointment/thanks', function () {
     return view('appointments.thanks');
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section id="contact" class="contact">
+<section id="contact" class="contact section-bg">
 <div class="container">
     <div class="section-title">
         <h2>Afspraak maken</h2>

@@ -40,7 +40,7 @@
       </div>
     </div>
 
-    <div class="container py-4">
+    <div class="container py-4 ">
       <div class="copyright">
         &copy; Copyright <strong><span>Chicks With Kicks</span></strong>. All Rights Reserved
       </div>

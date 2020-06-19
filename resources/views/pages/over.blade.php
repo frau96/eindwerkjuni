@@ -3,7 +3,7 @@
 @section('content')
         
     <!-- ======= Details Section ======= -->
-    <section id="details" class="details">
+    <section id="details" class="details section-bg">
         <div class="container">
             <div class="section-title">
                 <h2>Hoe werkt EASIER?</h2>

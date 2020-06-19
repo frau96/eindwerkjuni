@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section id="register" class="contact">
+<section id="register" class="contact section-bg">
     <div class="container ">
         <div class="section-title ">
             <h2>{{ __('Registeer') }}</h2>

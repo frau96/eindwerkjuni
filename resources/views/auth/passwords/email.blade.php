@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<section id="password" class="contact">
+<section id="password" class="contact section-bgs">
 
     <div class="container">
         <div class="section-title">

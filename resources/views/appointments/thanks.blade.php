@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section id="content" class="content">
+<section id="content" class="content section-bg">
     <div class="container">
         <div class="row">
                 

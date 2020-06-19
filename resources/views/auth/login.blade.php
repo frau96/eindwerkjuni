@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section id="login" class="contact">
+<section id="login" class="contact section-bg">
     <div>
         <br>
     </div>
