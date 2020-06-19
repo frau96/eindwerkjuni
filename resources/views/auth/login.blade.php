@@ -2,19 +2,23 @@
 
 @section('content')
 
-<section id="login">
+<section id="login" class="contact">
+    <div>
+        <br>
+    </div>
 <div class="container">
 
     <div class="section-title">
         <h2>Login</h2>
-        <p>Magnam dolores commodi suscipit. Necessitatibus eius consequatur ex aliquid fuga eum quidem. Sit sint consectetur velit. Quisquam quos quisquam cupiditate. Et nemo qui impedit suscipit alias ea. Quia fugiat sit in iste officiis commodi quidem hic quas.</p>
+        <p>Login om nieuwe beschikbaarheden toe tevoegen, aan te passen en afspraken te bekijken. </p>
     </div>
+
     <div class="row justify-content-center">
         <form method="POST" action="{{ route('login') }}" class="col-lg-6 php-email-form " data-aos="fade-up">
             @csrf
 
             <div class="form-group">
-                <label for="email" class="col-form-label">{{ __('E-Mail Address') }}</label>
+                <label for="email" class="col-form-label">{{ __('E-mail') }}</label>
 
                 <div>
                     <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
@@ -30,7 +34,7 @@
             <div class="form-group ">
                 <label for="password" class="col-form-label ">{{ __('Password') }}</label>
 
-                <div class="">
+                <div >
                     <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 
                     @error('password')
@@ -54,17 +58,22 @@
             </div>
 
             <div class="form-group row justify-content-center">
-                <div class=" ">
-                    <div class="text-center"><button type="submit" class="btn btn-primary">
-                        {{ __('Login') }}
-                    </button></div>
-                    
+                <div  class="col text-center">
 
+                    
+                    
+                       
+                        <button type="submit" >
+                            {{ __('Login') }}
+                        </button>
+                    
+                        
                     @if (Route::has('password.request'))
-                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                    <button type="submit" ><a  href="{{ route('password.request') }}">
                             {{ __('Forgot Your Password?') }}
-                        </a>
+                        </a> </button>
                     @endif
+                
                 </div>
             </div>
         </form>
