@@ -1209,3 +1209,13 @@ button[type="submit"]:active {
   }
 }
 
+a{
+  color:white;
+}
+
+.beschikbaarhedenb{
+  color:rgb(0,152,158);
+}
+.blauw{
+  color:rgb(0,152,158);
+}

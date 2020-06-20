@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section-title" >
             <h2>Beschikbaarheden</h2>
-            <p> Hieronder vindt u de beschikbaarheden van de psycholoog.</p>
+            <p> Hieronder vindt u de beschikbaarheden</p>
         </div>
     </div>
 
@@ -40,7 +40,7 @@
 
 
         <div class="testimonial-item  col-lg-4 col-md-6 ">
-            <a href="#">{{$availability->subject}}</a>
+            <a href="#" class="blauw">{{$availability->subject}}</a>
             <p>{{$availability->date}}</p>
             <p>{{$availability->time}}</p>
 

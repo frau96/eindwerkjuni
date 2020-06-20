@@ -18,11 +18,11 @@
         <div class="testimonial-item  col-lg-4 col-md-6 ">
             <img  class="testimonial-img" src="/uploads/{{$psycholoog->photo}}">
                 
-            <h3><a href="/psycholoogs/{{$psycholoog->id}}">{{$psycholoog->firstname}} {{$psycholoog->lastname}}</a></h3>
+            <h3><a href="/psycholoogs/{{$psycholoog->id}}" class="blauw">{{$psycholoog->firstname}} {{$psycholoog->lastname}}</a></h3>
             <h4> <p>{{$psycholoog->specialisation}}</p></h4>
                 <p><br>{{$psycholoog->description}}</p>
               
-                <a class="get-started" href="/psycholoogs/availability/{{$psycholoog->id}}">Bekijk de beschikbaarheden</a>
+                <a class="get-started beschikbaarhedenb" href="/psycholoogs/availability/{{$psycholoog->id}}">Bekijk de beschikbaarheden</a>
             
             </div>
 

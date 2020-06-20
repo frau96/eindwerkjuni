@@ -33,7 +33,8 @@
         </div>
 
 
-        <button type="submit" class="btn btn-primary">Beschikbaarheid aanpassen</button>
+        <div class="text-center"><button type="submit" class="btn btn-primary">Beschikbaarheid aanpassen</button></div>
+
 </form>
     </div>
 </div>

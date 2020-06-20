@@ -7,7 +7,7 @@
             <h3>EASIER</h3>
             <p>
               Schoolstraat 2 <br>
-              2345 AD, Eindhhoven<br>
+              2345 AD, Eindhoven<br>
               Nederland<br><br>
               
               <strong>Email:</strong> info@easier.nl<br>
@@ -24,17 +24,6 @@
             </ul>
           </div>
 
-          
-
-          <div class="col-lg-3 col-md-6 footer-links" data-aos="fade-up" data-aos-delay="200">
-            <h4>Sociale Netwerken</h4>
-            <div class="social-links mt-3">
-              <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-              <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-              <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-              <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-            </div>
-          </div>
 
         </div>
       </div>

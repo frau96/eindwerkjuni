@@ -10,7 +10,7 @@
         </div>
 
         <div class="row justify-content-center">
-            <form method="POST" action="{{ route('register') }}" class="col-lg-6 php-email-form " data-aos="fade-up">
+            <form method="POST" action="{{ route('register') }}" class="col-lg-6" data-aos="fade-up">
                 @csrf
 
                 <div class="form-group row justify-content-center">
