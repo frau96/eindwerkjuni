@@ -2,12 +2,17 @@
 
 @section('content')
 
+<section id="edit" class="contact section-bg">
+    <div class="container">
+        <div class="section-title">
+            <h2>Beschikbaarheid bewerken</h2>
+        </div>
     <button type="button" class="btn btn-info"><a href="/availabilities">< Terug naar beschikbaarheden</a></button>
 
-
-    <h1>Beschikbaarheid bewerken</h1>
+    <div class="row justify-content-center">
     
-    <form method="post" action="{{ route('availabilities.update', $availability->id) }}" method="POST" enctype="multipart/form-data">
+    
+    <form method="post" action="{{ route('availabilities.update', $availability->id) }}" method="POST" enctype="multipart/form-data" class="col-lg-6">
         <div class="form-group">
         @method('PUT')
         @csrf        
@@ -30,5 +35,8 @@
 
         <button type="submit" class="btn btn-primary">Beschikbaarheid aanpassen</button>
 </form>
+    </div>
+</div>
+</section>
 
 @endsection
