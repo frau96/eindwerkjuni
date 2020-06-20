@@ -22,10 +22,10 @@ class AppointmentsController extends Controller
         $appointments = '';
         if(!empty($psycholoog)){
             $var = Carbon::now();
-            $appointments = Appointment::leftJoin('availabilities', 'appointments.availability_id', '=' , 'availabilities.id')
+            $appointments = Appointment::leftJoin('availabilities', 'appointments.availability_id', '=' , 'availabilities.id')  // Left join van tabel availabilities, haal de id id op
                 ->select('appointments.id','appointments.client_firstname', 'appointments.client_lastname', 'appointments.client_email',  'availabilities.subject', 'availabilities.time', 'availabilities.date')
-                ->where('appointments.psych_id', $psycholoog->id)
-                ->where('availabilities.date', '>=' , $var )
+                ->where('appointments.psych_id', $psycholoog->id)       //de id van de appointments wordt gelinkt aan die van de psycholoog     //select van onderdelen van bedie tabellen
+                ->where('availabilities.date', '>=' , $var )            //toon enkel de availabilities die een datum hebben gelijk aan of later dan vandaag                    
                 ->get();
         }
         return view('appointments.index')->with('appointments', $appointments);
@@ -89,21 +89,21 @@ class AppointmentsController extends Controller
         $appointment->save();
 
         $availability = Availability::find($availability_id);               // Nu wordt de availability gezocht
-        $availability->is_taken = 1;                                        // De availability is_taken is true: is niet meer beschikbaar als availability
+        $availability->is_taken = 1;                                        // De availability is_taken is true: is niet meer beschikbaar als availability, want is ingenomen
         $availability->save();
 
         
-        $a = Availability::leftJoin('psycholoogs', 'availabilities.psych_id', '=' , 'psycholoogs.id')
+        $a = Availability::leftJoin('psycholoogs', 'availabilities.psych_id', '=' , 'psycholoogs.id')           // doe een left join met de psycholoogs tabel
         ->select('availabilities.id', 'availabilities.date', 'availabilities.time', 'psycholoogs.firstname', 'psycholoogs.lastname')
         ->where('availabilities.id' , '=' , $availability_id)->first();
 
-        $data = array(
+        $data = array(                                                      // Deze array dient om de datum tijd, en naam in de mail te zetten
             'date' => $a->date,
             'time' => $a->time,
             'psycholoog' => $a->firstname . ' ' . $a->lastname,
         );
 
-            Mail::send('mail.contact', $data ,function($message){       // bij afspraak maken, wordt bevestiging gestuurd (contact.blade.php)
+            Mail::send('mail.contact', $data ,function($message){           // bij afspraak maken, wordt bevestiging gestuurd (contact.blade.php)
                 $message->to(request('client_email'))                       // wordt verstuurd naar ingevoerde email van klant
                 ->subject('Bevestiging van uw afspraak');                   // subject van de email
             });
@@ -120,7 +120,8 @@ class AppointmentsController extends Controller
      */
     public function show($id)
     {
-        //
+        $appointment = Appointment::find($id);
+        return view('appointments.show')->with('appointment', $appointment);
     }
 
     /**

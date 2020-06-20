@@ -8,6 +8,8 @@
     @if(count($appointments) > 0)
         @foreach($appointments as $appointment)
             <div class="card card-body bg-light psych">
+
+                <a href="/appointments/{{$appointment->id}}">{{$appointment->subject}}</a>
             
                 <p>Datum: {{$appointment->date}}</p>
                 <p>Tijdstip: {{$appointment->time}}</p>
@@ -15,6 +17,7 @@
                 <p>Cliënt: {{$appointment->client_firstname}} {{$appointment->client_lastname}}</p>
                 <p>Contactgegevens: {{$appointment->client_email}}</p>
 
+                
                 <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST">
                     @csrf
                     @method('DELETE')

@@ -29,16 +29,6 @@
             <a href="/availabilities/{{$availability->id}}">{{$availability->subject}}</a>
             <p>{{$availability->date}}</p>
             <p>{{$availability->time}}</p>
-            <form action="{{ route('availabilities.destroy', $availability->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-
-                <!-- edit button -->
-                <button type="button" class="btn btn-success"><a href="/availabilities/{{$availability->id}}/edit">Bewerk beschikbaarheid</a></button>
-                
-                <!-- delete button -->
-                    <button type="button" class="btn btn-danger float-right" onClick="window.location.reload()">Delete</button>
-            </form>
         </div>
     </div>
 
