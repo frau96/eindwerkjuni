@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Availability;
 use App\Psycholoog;
+use Carbon\Carbon;
 
 class AvailabilitiesController extends Controller
 {
@@ -18,9 +19,11 @@ class AvailabilitiesController extends Controller
         $psycholoog = Psycholoog::where('user_id', auth()->user()->id)->first();
         $availabilities = '';
         if(!empty($psycholoog)){
+            $var = Carbon::now();
             $availabilities = Availability::orderBy('date', 'asc')
                 ->where('psych_id', $psycholoog->id)
                 ->where('is_taken', 0)
+                ->where('availabilities.date', '>=' , $var )
                 ->get(); 
         }
 
@@ -30,9 +33,11 @@ class AvailabilitiesController extends Controller
 
     public function indexClient($id)
     { 
+        $var = Carbon::now();
         $availabilities = Availability::orderBy('date', 'asc')                          // Zelfde functie als index, maar dan enkel wat cliënt ziet
             ->where('psych_id', $id)                                                   // Haal alle availabilities op, van deze psycholoog
-            ->where('is_taken', 0)                                                    // Enkel diegene die nog niet zijn ingenomen
+            ->where('is_taken', 0) 
+            ->where('availabilities.date', '>=' , $var )                                                   // Enkel diegene die nog niet zijn ingenomen
             ->get(); 
 
         return view('availabilities.index')->with('availabilities', $availabilities);
