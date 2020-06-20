@@ -11,7 +11,8 @@
 </head>
     <body>
         <img src="{{ asset('assets/img/easier.png')}}">
-        <h3>Bedankt voor het maken van een afspraak</h3>
+        <h3>Beste cliënt,</h3>
+        <div>Bedankt voor het maken van een afspraak</div>
         <div>Op {{$date}} en {{$time}} hebt uw een afspraak met</div>    
         <div><b>Psycholoog {{$psycholoog}} </b> </div>
 

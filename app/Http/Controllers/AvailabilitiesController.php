@@ -17,6 +17,8 @@ class AvailabilitiesController extends Controller
     public function index()
     {
         $psycholoog = Psycholoog::where('user_id', auth()->user()->id)->first();
+        //$psycholoog = Psycholoog::where('user_id', Auth()->user->id)->first();
+      
         $availabilities = '';
         if(!empty($psycholoog)){
             $var = Carbon::now();
@@ -28,11 +30,14 @@ class AvailabilitiesController extends Controller
         }
 
         //$availabilities = Availability::orderBy('date', 'asc')->get();
+        view()->share('psycholoog', $psycholoog);
         return view('availabilities.index')->with('availabilities', $availabilities);
     }
 
     public function indexClient($id)
     { 
+        $psycholoog = Psycholoog::where('id', $id)->first();
+   
         $var = Carbon::now();
         $availabilities = Availability::orderBy('date', 'asc')                          // Zelfde functie als index, maar dan enkel wat cliënt ziet
             ->where('psych_id', $id)                                                   // Haal alle availabilities op, van deze psycholoog
@@ -40,6 +45,7 @@ class AvailabilitiesController extends Controller
             ->where('availabilities.date', '>=' , $var )                                                   // Enkel diegene die nog niet zijn ingenomen
             ->get(); 
 
+        view()->share('psycholoog', $psycholoog);
         return view('availabilities.index')->with('availabilities', $availabilities);
     }
 
@@ -80,7 +86,7 @@ class AvailabilitiesController extends Controller
         $availability->is_taken = 0;                            // is_taken 0, is nog niet ingenomen, dus nog altijd beschikbaar
         $availability->save();
 
-        return redirect('/availabilities')->with('success', 'Beschikbaarheid aangemaakt');
+        return redirect('/availabilities');
     }
 
     /**
@@ -143,6 +149,6 @@ class AvailabilitiesController extends Controller
     {
         $availability = Availability::find($id);
         $availability->delete();
-        return redirect('/availabilities')->with('success', 'Beschikbaarheid verwijderd');
+        return redirect('/availabilities');
     }
 }

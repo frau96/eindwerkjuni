@@ -155,22 +155,20 @@ class AppointmentsController extends Controller
      */
     public function destroy($id)
     {
-        /*
+        
         $appointment = Appointment::find($id);
-        dd($appointment);
+        
         //$appointment->delete();
 
-        $this->validate($request, [
-            'client_firstname'=>'required',
-            'client_lastname'=>'required',
-            'client_email'=>'required',
-        ]);
 
-        $availability_id = $request->input('availability_id');
+        $availability_id = $appointment->availability_id;
         $availability = Availability::find($availability_id);               // Nu wordt de availability gezocht
-        $availability->is_taken = 0;                                        // De availability is_taken is true: is niet meer beschikbaar als availability
+        $availability->is_taken = 0;                                        // De availability is_taken is: terug beschikbaar als availability
         $availability->save();
-*/
-        return redirect('/appointments')->with('success', 'Afspraak verwijderd');
+        $appointment->delete();
+
+        
+
+        return redirect('/appointments');
     }
 }

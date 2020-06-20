@@ -19,13 +19,11 @@
                 
                 <form action="{{ route('appointments.destroy', $appointment->id) }}" method="POST">
                     @csrf
-                    @method('DELETE')
-                    <!-- edit button -->
-                    <button type="button" class="btn btn-success">Bewerk afspraak</a></button>
-                    
+                    @method('DELETE')                    
                     <!-- delete button -->
-                    <button type="button" class="btn btn-danger float-right">Delete</button>
+                    <button type="submit" class="btn btn-danger float-right">Delete</button>
                 </form>
+
                               
             </div>
 

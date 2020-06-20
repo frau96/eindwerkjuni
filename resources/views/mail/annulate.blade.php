@@ -11,11 +11,11 @@
 </head>
     <body>
         <img src="{{ asset('assets/img/easier.png')}}">
-        <h3>Bedankt voor het maken van een afspraak</h3>
-        <div>Op //DATUM en //TIJDSTIP hebt uw een afspraak gepland met</div>    
-        <div><b>Psycholoog NAAM</b> </div>
+        <h3>Beste cliënt,</h3>
+        <div>Uw afspraak met psycholoog <b>{{$psycholoog}}</b> op <b>{{$date}} en {{$time}}</b> werd helaas geannuleerd</div>    
 
-        <div><br>Deze afspraak werd geannuleerd. U kan nu een nieuwe afspraak boeken.</div>
+
+        <div><br>Voor vragen in verband met de annularing, contacteer uw psycholoog. Indien u een nieuw afspraak wilt plannen, kies dan een nieuwe afspraak op de website van Easier.</div>
 
         <div><br><br>Tot binnenkort</div>
     </body>

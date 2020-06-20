@@ -7,7 +7,7 @@
     </div>
     
 
-    <form method="post" action="{{ route('availabilities.store') }}"  enctype="multipart/form-data" class="php-email-form" data-aos="fade-up"> 
+    <form method="post" action="{{ route('availabilities.store') }}"  enctype="multipart/form-data" > 
         <div class="form-group">
         @csrf            
         <label for="beschikbaarheid">Naam beschikbaarheid</label>
@@ -32,3 +32,4 @@
 </div>
 
 @endsection
+

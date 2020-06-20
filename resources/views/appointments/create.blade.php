@@ -11,7 +11,7 @@
     
     <div class="row">
         <div class="col-lg-12">
-            <form method="post" action="{{ route('appointments.store') }}"  enctype="multipart/form-data" class="php-email-form">
+            <form method="post" action="{{ route('appointments.store') }}"  enctype="multipart/form-data">
         
                 <h3> {{$availability->firstname}} {{$availability->lastname}}</h3>
         
