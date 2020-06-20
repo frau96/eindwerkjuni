@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('content')
-<div class="container"> 
+<div class="container section-bg"> 
     <div class="section-title">
         <h1>Nieuwe beschikbaarheid aanmaken</h1>
     </div>

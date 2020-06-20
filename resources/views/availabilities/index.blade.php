@@ -5,7 +5,7 @@
     <div class="container">
         <div class="section-title" >
             <h2>Beschikbaarheden</h2>
-            <p>iets van de beshcikbaarheden ...</p>
+            <p> Hieronder vindt u de beschikbaarheden van de psycholoog.</p>
         </div>
     </div>
     
@@ -15,8 +15,8 @@
 
     
     <div class="row justify-content-center">
-        <div class="testimonial-item  col-lg-4 col-md-6 ">
-            <a href="/availabilities/{{$availability->id}}">{{$availability->subject}}</a>
+        <div class="testimonial-item  col-lg-4 col-md-6 text-center">
+            <div><h3>{{$availability->subject}}<h3></div>
             <p>{{$availability->date}}</p>
             <p>{{$availability->time}}</p>
 
@@ -25,6 +25,8 @@
     </div>
 
     @else
+    <a href="/availabilities/create" class="btn-link">Maak een beschikbaarheid aan</a>
+
         <div class="testimonial-item  col-lg-4 col-md-6 ">
             <a href="/availabilities/{{$availability->id}}">{{$availability->subject}}</a>
             <p>{{$availability->date}}</p>
@@ -57,9 +59,17 @@
     @endforeach()
 
 @else
+<div class="text-center">
+    @guest
     <p>Er zijn geen beschikbaarheden voor deze psycholoog</p>
-    <a href="/availabilities/create" class="btn btn-primary">Maak je eerste beschikbaarheid aan</a>
 
+    @else
+    <p>Er zijn geen beschikbaarheden voor deze psycholoog</p>
+
+    <a href="/availabilities/create" class="btn-link">Maak je eerste beschikbaarheid aan</a>
+    @endguest
+    
+</div>
 @endif
 </section>
 
