@@ -19,7 +19,9 @@
         
     </div>
 
+    
 
+    
     
     @if(count($availabilities) > 0)
     @foreach($availabilities as $availability)
@@ -27,7 +29,7 @@
 
     
     <div class="row justify-content-center">
-        <div class="testimonial-item  col-lg-4 col-md-6 text-center">
+        <div class="testimonial-item col-lg-4 col-md-6 ">
             <div><h3>{{$availability->subject}}<h3></div>
             <p>{{$availability->date}}</p>
             <p>{{$availability->time}}</p>
@@ -38,10 +40,10 @@
 
     @else
 
-
-        <div class="testimonial-item  col-lg-4 col-md-6 ">
+    <div class="row justify-content-center">
+        <div class="testimonial-item  col-lg-2 col-md-6  text-center">
             <a href="#" class="blauw">{{$availability->subject}}</a>
-            <p>{{$availability->date}}</p>
+            <p>{{$availability->date}}</p> 
             <p>{{$availability->time}}</p>
 
 
@@ -51,38 +53,20 @@
                 @csrf
                 @method('DELETE')
                 <!-- edit button -->
-                <button type="button" class="btn btn-success"><a href="/availabilities/{{$availability->id}}/edit">Bewerk beschikbaarheid</a></button>
+                <button type="button" class="btn btn-success  "><a href="/availabilities/{{$availability->id}}/edit">Bewerk beschikbaarheid</a></button><br>
                 
                 <!-- delete button -->
-                    <button type="submit" class="btn btn-danger float-right">Delete</button>
+                    <button type="submit" class="btn btn-danger ">Delete</button>
             </form>
 
             @endif
 
         </div>
     </div>
+    
 
     @endguest
-        {{-- <div class="card card-body bg-light psych">
-        <h3><a href="/availabilities/{{$availability->id}}">{{$availability->subject}}</a></h3>
-            <p>{{$availability->date}}</p>
-            <p>{{$availability->time}}</p>
-
-            <a href="/availabilities/new-appointment/{{$availability->id}}" class="btn btn-info">Maak deze afspraak</a>
-            <!--<button type="button" class="btn btn-info">Plaats jezelf op de wachtlijst???</button>-->
-
-            <form action="{{ route('availabilities.destroy', $availability->id) }}" method="POST">
-                @csrf
-                @method('DELETE')
-
-                <!-- edit button -->
-                <button type="button" class="btn btn-success"><a href="/availabilities/{{$availability->id}}/edit">Bewerk beschikbaarheid</a></button>
-                
-                <!-- delete button -->
-                    <button type="button" class="btn btn-danger float-right">Delete</button>
-            </form>
-                          
-        </div> --}}
+       
 
     @endforeach()
 
@@ -92,6 +76,7 @@
     <p>Er zijn geen beschikbaarheden voor deze psycholoog</p>
 
     @endguest
+</div>
     
 </div>
 @endif

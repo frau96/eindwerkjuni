@@ -6,11 +6,11 @@ body {
   color: #585a61;
 }
 
-a {
+a .link{
   color:rgb(0,152,158);
 }
 
-a:hover {
+a:hover .link {
   color: rgb(226, 239,239);
   text-decoration: none;
 }
@@ -392,7 +392,7 @@ button:active, button:focus{
 
 #hero h2 {
   color: #515f7d;
-  margin-bottom: 50px;
+  margin-bottom: 20px;
   font-size: 20px;
 }
 
@@ -431,6 +431,11 @@ button:active, button:focus{
     width: 80%;
   }
 }
+
+#hero a {
+  color:rgb(0,152,158);
+}
+
 
 /*--------------------------------------------------------------
 # Sections General
